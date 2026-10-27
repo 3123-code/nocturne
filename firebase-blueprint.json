@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "Post": {
+      "title": "Post",
+      "description": "24-hour ephemeral post containing photo, video, or text",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorHandle": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "mediaType": { "type": "string", "enum": ["photo", "video", "text"] },
+        "mediaUrl": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "expiresAt": { "type": "number" },
+        "reactions": { "type": "object" },
+        "comments": { "type": "array" },
+        "viewsCount": { "type": "number" }
+      },
+      "required": ["id", "authorId", "content", "mediaType", "createdAt", "expiresAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Public profile of a community member",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "handle": { "type": "string" },
+        "avatar": { "type": "string" },
+        "bio": { "type": "string" },
+        "location": { "type": "string" },
+        "joinedDate": { "type": "string" },
+        "friends": { "type": "array" },
+        "publicKeyFingerprint": { "type": "string" },
+        "isOnline": { "type": "boolean" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["id", "name", "handle", "avatar"]
+    },
+    "EncryptedMessage": {
+      "title": "EncryptedMessage",
+      "description": "End-to-End encrypted message between peers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "recipientId": { "type": "string" },
+        "ciphertext": { "type": "string" },
+        "iv": { "type": "string" },
+        "encryptedKeySender": { "type": "string" },
+        "encryptedKeyRecipient": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "mediaUrl": { "type": "string" },
+        "mediaType": { "type": "string" }
+      },
+      "required": ["id", "senderId", "recipientId", "ciphertext", "iv", "encryptedKeySender", "encryptedKeyRecipient", "createdAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Real-time notification for interactions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "actorId": { "type": "string" },
+        "type": { "type": "string" },
+        "postId": { "type": "string" },
+        "details": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "isRead": { "type": "boolean" }
+      },
+      "required": ["id", "userId", "actorId", "type", "details", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/Post" },
+      "description": "Shared ephemeral 24-hour posts visible to all users"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Public member profiles, descriptions, and avatars"
+    },
+    "/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/EncryptedMessage" },
+      "description": "End-to-end encrypted messages exchanged between friends"
+    },
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "Real-time notifications for interactions on posts"
+    }
+  }
+}

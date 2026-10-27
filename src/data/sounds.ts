@@ -1,0 +1,58 @@
+import { SoundTrack } from '../types';
+
+export const TRENDING_SOUNDTRACKS: SoundTrack[] = [
+  {
+    id: 'sound_lofi_midnight',
+    title: 'Midnight Rain Lo-Fi',
+    artist: 'Nocturne Chill Lab',
+    duration: 30,
+    url: 'https://cdn.freesound.org/previews/512/512498_6142149-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80',
+    category: 'Lo-Fi / Chill',
+  },
+  {
+    id: 'sound_synthwave_drive',
+    title: 'Cyber Highway 84',
+    artist: 'Neon Rider',
+    duration: 45,
+    url: 'https://cdn.freesound.org/previews/459/459992_6142149-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=300&q=80',
+    category: 'Synthwave',
+  },
+  {
+    id: 'sound_phonk_tokyo',
+    title: 'Drift Mirage (Phonk)',
+    artist: 'Shadow Kage',
+    duration: 35,
+    url: 'https://cdn.freesound.org/previews/612/612089_11861866-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=300&q=80',
+    category: 'Phonk / Bass',
+  },
+  {
+    id: 'sound_club_energy',
+    title: 'Bass Drop Euphoria',
+    artist: 'DJ Pulse',
+    duration: 25,
+    url: 'https://cdn.freesound.org/previews/682/682052_11861866-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80',
+    category: 'Electronic / Dance',
+  },
+  {
+    id: 'sound_acoustic_sun',
+    title: 'Golden Sunset Vibes',
+    artist: 'Acoustic Horizon',
+    duration: 40,
+    url: 'https://cdn.freesound.org/previews/573/573379_11861866-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=300&q=80',
+    category: 'Acoustic / Warm',
+  },
+  {
+    id: 'sound_ambient_dream',
+    title: 'Deep Ether Meditation',
+    artist: 'Cosmic Drift',
+    duration: 60,
+    url: 'https://cdn.freesound.org/previews/588/588234_11861866-lq.mp3',
+    coverUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80',
+    category: 'Ambient / Relax',
+  },
+];

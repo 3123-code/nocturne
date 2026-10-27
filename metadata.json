@@ -1,0 +1,6 @@
+{
+  "name": "Nocturne - 24h Ephemeral Social & Encrypted Chat",
+  "description": "Dark-mode ephemeral social network where public posts vanish after 24 hours unless saved to your private local storage vault. Featuring end-to-end encrypted chat, interactive reactions, comments, and real-time alerts.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

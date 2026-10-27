@@ -1,0 +1,63 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Community posts (all previous posts remain visible)
+    match /posts/{postId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Reels (short videos in 9:16 doomscroll feed)
+    match /reels/{reelId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Community user profiles & accounts
+    match /users/{userId} {
+      allow get, list: if true;
+      allow create, update: if true;
+      allow delete: if false;
+    }
+
+    // End-to-end encrypted direct messages
+    match /messages/{messageId} {
+      allow get, list: if true;
+      allow create: if true;
+      allow update, delete: if false;
+    }
+
+    // Group chats
+    match /groups/{groupId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Group messages
+    match /group_messages/{msgId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Real-time notifications & friend requests
+    match /notifications/{notificationId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Connection ping test document
+    match /_connection_test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
